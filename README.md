@@ -1,8 +1,8 @@
 # Goctl for Visual Studio Code
 
-![go-zero](https://img.shields.io/badge/Github-go--zero-brightgreen?link=https://github.com/tal-tech/go-zero&logo=github)
-![License](https://img.shields.io/badge/License-MIT-blue?link=https://github.com/zeromicro/goctl-vscode/blob/main/LICENSE)
-![Test](https://github.com/zeromicro/goctl-vscode/workflows/Test/badge.svg)
+[![go-zero](https://img.shields.io/badge/Github-go--zero-brightgreen?logo=github)](https://github.com/tal-tech/go-zero)
+[![license](https://img.shields.io/badge/License-MIT-blue)](https://github.com/zeromicro/goctl-vscode/blob/main/LICENSE)
+[![Test](https://github.com/zeromicro/goctl-vscode/workflows/Test/badge.svg?branch=master)](https://github.com/zeromicro/goctl-vscode/actions?query=workflow%3ATest)
 
 ## 安装此扩展
 
