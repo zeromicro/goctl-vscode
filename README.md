@@ -1,5 +1,17 @@
 # Goctl for Visual Studio Code
 
+![go-zero](https://img.shields.io/badge/Github-go--zero-brightgreen?link=https://github.com/tal-tech/go-zero&logo=github)
+![License](https://img.shields.io/badge/License-MIT-blue?link=https://github.com/zeromicro/goctl-vscode/blob/main/LICENSE)
+![Test](https://github.com/zeromicro/goctl-vscode/workflows/Test/badge.svg)
+
+## 安装此扩展
+
+该插件可以安装在 1.46.0+ 版本的 Visual Studio Code 上，首先请确保你的 Visual Studio Code 版本符合要求，并已安装 goctl 命令行工具。如果尚未安装 Visual Studio Code，请安装并打开 Visual Studio Code。 导航到“扩展”窗格，搜索 `goctl` 并安装此扩展（发布者ID为 “xiaoxin-technology.goctl”）。
+
+> Visual Studio Code 扩展使用请参考[这里](https://code.visualstudio.com/docs/editor/extension-gallery)。
+
+更多信息请点击[这里](vscode/README.md)。
+
 ## 功能列表
 
 已实现功能
