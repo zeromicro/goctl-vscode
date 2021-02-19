@@ -3,12 +3,6 @@ import { GOCTL } from './goctlMode';
 import { GoctlDocumentFormattingEditProvider } from './goctlFormat';
 import { GoctlDefinitionProvider } from './goctlDeclaration';
 
-enum DocSegmentType {
-	Type,
-	Service,
-	None
-}
-
 export function activate(context: vscode.ExtensionContext) {
 	registerUsualProviders(context);
 }
