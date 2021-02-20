@@ -47,11 +47,11 @@ export class GoctlDocumentFormattingEditProvider implements vscode.DocumentForma
 			p.on('error', (err) => {
 				if (!err) {
 					vscode.window.showWarningMessage('Unknown mistake , please feedback.');
-					return reject()
+					return reject();
 				}
-				goctlOutputChannel.appendLine(err.toString())
+				goctlOutputChannel.appendLine(err.toString());
 
-				let errCode = (<any>err).code
+				let errCode = (<any>err).code;
 
 				switch (errCode) {
 					case 'ENOENT': {
