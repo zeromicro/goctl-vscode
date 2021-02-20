@@ -1,13 +1,20 @@
+## v0.1.7 preview
+
+### Optimize
+
+* Improve error message when an error occurs in format api file.
+* Add goctl output channel for debug info log print and error log print.
+
 ## v0.1.6
 
 ### Support
 
-* `@handler` annotation syntax highlighting.
-* support for route jump without returns to definition.
+* Add `@handler` annotation syntax highlighting.
+* Support for route jump without returns to definition.
 
 ### Fixed
 
-* fix some syntax highlighting errors, example `get /greet/to/:name`.
+* Fix some syntax highlighting errors, example `get /greet/to/:name`.
 
 ## v0.1.5
 
