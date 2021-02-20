@@ -12,6 +12,8 @@
 
 更多信息请点击[这里](vscode/README.md)。
 
+**注意:** 如果你使用的 shell 是 `fish`，`$PATH`环境变量在 `fish` 中配置，可能会导致 vscode 中的 `$PATH` 和 Terminal 中的 `$PATH` 不一致，具体请参考：[PATH issues with Fish shell on macOS](https://github.com/microsoft/vscode/issues/21655)。
+
 ## 功能列表
 
 已实现功能
@@ -35,7 +37,7 @@
 
 ### 代码格式化
 
-调用 goctl 命令行格式化工具，使用前请确认 goctl 已加入 `$PATH` 且有可执行权限
+调用 goctl 命令行格式化工具，使用前请确认 goctl 已加入 `$PATH` 且有可执行权限。
 
 ### 代码块提示
 
@@ -54,3 +56,7 @@
 #### handler 代码块
 
 ![type](docs/images/handler.gif)
+
+## 反馈与建议
+
+如果你遇到了问题或者有改进建议，请点击[这里](https://github.com/zeromicro/goctl-vscode/issues/new/choose)提交 issue。
