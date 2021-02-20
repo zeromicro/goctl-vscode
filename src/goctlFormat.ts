@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import cp = require('child_process');
 import * as util from './util';
+import { goctlOutputChannel } from './extension';
 
 export class GoctlDocumentFormattingEditProvider implements vscode.DocumentFormattingEditProvider {
 	provideDocumentFormattingEdits(
@@ -44,11 +45,31 @@ export class GoctlDocumentFormattingEditProvider implements vscode.DocumentForma
 			p.stdout.on('data', (data) => (stdout += data));
 			p.stderr.on('data', (data) => (stderr += data));
 			p.on('error', (err) => {
-				if (err && (<any>err).code === 'ENOENT') {
-					// promptForMissingTool(formatTool);
-					vscode.window.showWarningMessage('Check the console in goctl when formatting. goctl seem not in your $PATH , please try in terminal.');
-					return reject();
+				if (!err) {
+					vscode.window.showWarningMessage('Unknown mistake , please feedback.');
+					return reject()
 				}
+				goctlOutputChannel.appendLine(err.toString())
+
+				let errCode = (<any>err).code
+
+				switch (errCode) {
+					case 'ENOENT': {
+						// promptForMissingTool(formatTool);						
+						vscode.window.showInformationMessage("If you don't have goctl installed, you can install it with the following command: \"GO111MODULE=on go get -u github.com/tal-tech/go-zero/tools/goctl\"");
+						vscode.window.showWarningMessage('Check the console in goctl when formatting. goctl seem not in your $PATH , please try in terminal.');
+						break;
+					}
+					case 'EACCES': {
+						vscode.window.showWarningMessage('Check the console in goctl when formatting. goctl seem no executable permissions, please try in terminal.');
+						break;
+					}
+					default: {
+						vscode.window.showWarningMessage(err.toString());
+						break;
+					}
+				}
+				return reject();
 			});
 			p.on('close', (code) => {
 				if (code !== 0) {
