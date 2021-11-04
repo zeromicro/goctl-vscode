@@ -1,3 +1,9 @@
+## v0.1.8
+
+### Document
+
+* Updated some outdated outlink.
+
 ## v0.1.7
 
 ### Optimize
