@@ -56,7 +56,7 @@ export class GoctlDocumentFormattingEditProvider implements vscode.DocumentForma
 				switch (errCode) {
 					case 'ENOENT': {
 						// promptForMissingTool(formatTool);						
-						vscode.window.showInformationMessage("If you don't have goctl installed, you can install it with the following command: \"GO111MODULE=on go get -u github.com/tal-tech/go-zero/tools/goctl\"");
+						vscode.window.showInformationMessage("If you don't have goctl installed, you can install it with the following this doc: \"https://github.com/zeromicro/go-zero#6-quick-start\"");
 						vscode.window.showWarningMessage('Check the console in goctl when formatting. goctl seem not in your $PATH , please try in terminal.');
 						break;
 					}
