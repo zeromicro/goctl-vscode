@@ -27,7 +27,7 @@
 
 * Fix the bug that the file cannot be saved when the user sets `editor.formatOnSave` is `true`.
 
-**Note:** To upgrade this version, please make sure that the goctl command line tool is also upgraded to the latest version. To upgrade the goctl command line tool, you can rerun the [goctl command line tool installation](https://github.com/tal-tech/go-zero#5-quick-start) command.
+**Note:** To upgrade this version, please make sure that the goctl command line tool is also upgraded to the latest version. To upgrade the goctl command line tool, you can rerun the [goctl command line tool installation](https://github.com/zeromicro/go-zero#6-quick-start) command.
 
 ## v0.1.4
 

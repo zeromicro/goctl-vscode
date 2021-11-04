@@ -2,7 +2,7 @@
 
 English | [简体中文](README-cn.md)
 
-[![go-zero](https://img.shields.io/badge/Github-go--zero-brightgreen?logo=github)](https://github.com/tal-tech/go-zero)
+[![go-zero](https://img.shields.io/badge/Github-go--zero-brightgreen?logo=github)](https://github.com/zeromicro/go-zero)
 [![license](https://img.shields.io/badge/License-MIT-blue)](https://github.com/zeromicro/goctl-vscode/blob/main/LICENSE)
 [![Test](https://github.com/zeromicro/goctl-vscode/workflows/Test/badge.svg?branch=main)](https://github.com/zeromicro/goctl-vscode/actions?query=workflow%3ATest)
 
