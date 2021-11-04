@@ -1,4 +1,4 @@
-## v0.1.7 preview
+## v0.1.7
 
 ### Optimize
 

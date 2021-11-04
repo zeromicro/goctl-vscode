@@ -1,62 +1,81 @@
 # Goctl for Visual Studio Code
 
+English | [简体中文](README-cn.md)
+
 [![go-zero](https://img.shields.io/badge/Github-go--zero-brightgreen?logo=github)](https://github.com/tal-tech/go-zero)
 [![license](https://img.shields.io/badge/License-MIT-blue)](https://github.com/zeromicro/goctl-vscode/blob/main/LICENSE)
 [![Test](https://github.com/zeromicro/goctl-vscode/workflows/Test/badge.svg?branch=main)](https://github.com/zeromicro/goctl-vscode/actions?query=workflow%3ATest)
 
-## 安装此扩展
+## Install
 
-该插件可以安装在 1.46.0+ 版本的 Visual Studio Code 上，首先请确保你的 Visual Studio Code 版本符合要求，并已安装 goctl 命令行工具。如果尚未安装 Visual Studio Code，请安装并打开 Visual Studio Code。 导航到“扩展”窗格，搜索 `goctl` 并安装此扩展（发布者ID为 “xiaoxin-technology.goctl”）。
+This plugin can be installed on Visual Studio Code version 1.46.0+. First make sure your version of Visual Studio Code meets the requirements and that the `goctl` command line tool is installed. If Visual Studio Code is not installed, please install and open Visual Studio Code. Navigate to the Extensions pane, search for `goctl` and install this extension (publisher ID is "xiaoxin- technology.goctl").
 
-> Visual Studio Code 扩展使用请参考[这里](https://code.visualstudio.com/docs/editor/extension-gallery)。
+> Please refer to [here](https://code.visualstudio.com/docs/editor/extension-gallery) for Visual Studio Code extension usage.
 
-更多信息请点击[这里](vscode/README.md)。
+**Note:** If the shell you are using is `fish`, the `$PATH` environment variable is configured in `fish`, which may cause the `$PATH` in vscode to be inconsistent with the `$PATH` in Terminal, please refer to: [PATH issues with Fish shell on macOS]( https://github.com/microsoft/vscode/issues/21655).
 
-**注意:** 如果你使用的 shell 是 `fish`，`$PATH`环境变量在 `fish` 中配置，可能会导致 vscode 中的 `$PATH` 和 Terminal 中的 `$PATH` 不一致，具体请参考：[PATH issues with Fish shell on macOS](https://github.com/microsoft/vscode/issues/21655)。
+## Functions
 
-## 功能列表
+Implemented functions
 
-已实现功能
+* Syntax highlighting
+* Jump to definition/reference
+* Code formatting
+* Code block hinting
 
-* 语法高亮
-* 跳转到定义/引用
-* 代码格式化
-* 代码块提示
+No implemented:
 
-未实现功能:
+* Syntax error checking
+* Cross-file code jumping
 
-* 语法错误检查
-* 跨文件代码跳转
-* goctl 命令行调用
+### Syntax Highlighting
 
-### 语法高亮
+### Code Jump
 
-### 代码跳转
+<p align=center>
+<img src="docs/images/jump.gif" width=75%>
+<br/>
+<em>(Jump to definition/reference)</em>
+</p>
 
-![jump](docs/images/jump.gif)
+### Code Format
 
-### 代码格式化
+The code formatting function will invoke the goctl command line formatting tool. Make sure goctl is added to `$PATH` and has executable permissions before using it.
 
-调用 goctl 命令行格式化工具，使用前请确认 goctl 已加入 `$PATH` 且有可执行权限。
+### Code Block Hints
 
-### 代码块提示
+#### Info Code Block
 
-#### info 代码块
+<p align=center>
+<img src="docs/images/info.gif" width=75%>
+<br/>
+<em>(Generate info code block)</em>
+</p>
 
-![info](docs/images/info.gif)
+#### Type Code Block
 
-#### type 代码块
+<p align=center>
+<img src="docs/images/type.gif" width=75%>
+<br/>
+<em>(Generate type code block)</em>
+</p>
 
-![type](docs/images/type.gif)
+#### Service Code Block
 
-#### service 代码块
+<p align=center>
+<img src="docs/images/service.gif" width=75%>
+<br/>
+<em>(Generate service code block)</em>
+</p>
 
-![type](docs/images/service.gif)
+#### Handler Code Block
 
-#### handler 代码块
+<p align=center>
+<img src="docs/images/handler.gif" width=75%>
+<br/>
+<em>(Generate handler code block)</em>
+</p>
 
-![type](docs/images/handler.gif)
+## Feedback & Suggestions
 
-## 反馈与建议
-
-如果你遇到了问题或者有改进建议，请点击[这里](https://github.com/zeromicro/goctl-vscode/issues/new/choose)提交 issue。
+If you encounter problems or have suggestions for improvement, please submit an issue by clicking [here](https://github.com/zeromicro/goctl-vscode/issues/new/choose).
