@@ -1,3 +1,9 @@
+## v0.1.9
+
+### Support
+
+* Support abbreviated doc code blocks, such as `@doc "foo"`
+
 ## v0.1.8
 
 ### Document
