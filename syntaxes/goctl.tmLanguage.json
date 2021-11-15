@@ -499,6 +499,9 @@
 					"include": "#doc"
 				},
 				{
+					"include": "#docSimple"
+				},
+				{
 					"include": "#server"
 				},
 				{
@@ -559,8 +562,13 @@
 		},
 		"doc": {
 			"name": "comment.doc.service.goctl",
-			"begin": "@doc",
+			"begin": "@doc\\s*\\(",
 			"end": "\\)"
+		},
+		"docSimple": {
+			"name": "comment.doc.service.goctl",
+			"begin": "@doc\\s*\"",
+			"end": "\""
 		},
 		"server": {
 			"name": "method.server.service.goctl",

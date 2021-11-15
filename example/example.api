@@ -1,0 +1,45 @@
+/**
+ * api语法示例及语法说明
+ */
+
+// api语法版本
+syntax = "v1"
+
+// import literal
+import "foo.api"
+
+// import group
+import (
+    "bar.api"
+    "foo/bar.api"
+)
+info(
+    author: "username"
+    date:   "2020-01-08"
+    desc:   "api syntax example and syntax description"
+)
+
+// type literal
+
+type Foo{
+    Foo int `json:"foo"`
+}
+
+// type group
+
+type(
+    Bar{
+        Bar int `json:"bar"`
+    }
+)
+
+// service block
+@server(
+    jwt:   Auth
+    group: foo
+)
+service foo-api{
+    @doc "foo"
+    @handler foo
+    post /foo (Foo) returns (Bar)
+}
