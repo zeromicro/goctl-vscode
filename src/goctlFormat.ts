@@ -33,7 +33,7 @@ export class GoctlDocumentFormattingEditProvider implements vscode.DocumentForma
 		token: vscode.CancellationToken
 	): Thenable<vscode.TextEdit[]> {
 
-		const formatFlags = ['api', 'format', '-iu', '--stdin'];
+		const formatFlags = ['api', 'format', '-iu', '-dir', document.fileName, '--stdin'];
 		return new Promise<vscode.TextEdit[]>((resolve, reject) => {
 			let stdout = '';
 			let stderr = '';
@@ -55,7 +55,7 @@ export class GoctlDocumentFormattingEditProvider implements vscode.DocumentForma
 
 				switch (errCode) {
 					case 'ENOENT': {
-						// promptForMissingTool(formatTool);						
+						// promptForMissingTool(formatTool);
 						vscode.window.showInformationMessage("If you don't have goctl installed, you can install it with the following this doc: \"https://github.com/zeromicro/go-zero#6-quick-start\"");
 						vscode.window.showWarningMessage('Check the console in goctl when formatting. goctl seem not in your $PATH , please try in terminal.');
 						break;
