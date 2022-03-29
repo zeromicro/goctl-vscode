@@ -1,3 +1,9 @@
+## v0.1.10
+
+### Support
+
+* Support for formatting documents that use `import` to import external dependencies.
+
 ## v0.1.9
 
 ### Support
