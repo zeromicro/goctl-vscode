@@ -4,6 +4,11 @@ import * as util from './util';
 import { goctlOutputChannel } from './extension';
 
 export class GoctlDocumentFormattingEditProvider implements vscode.DocumentFormattingEditProvider {
+
+	coll = vscode.languages.createDiagnosticCollection(
+		vscode.window.activeTextEditor?.document.fileName
+	);
+
 	provideDocumentFormattingEdits(
 		document: vscode.TextDocument,
 		options: vscode.FormattingOptions,
@@ -18,7 +23,24 @@ export class GoctlDocumentFormattingEditProvider implements vscode.DocumentForma
 						if (element.trim().length === 0) {
 							return;
 						}
-						vscode.window.showErrorMessage(element);
+
+						const errObj = this.createDiagnostic(document, element);
+						const diagnostics: vscode.Diagnostic[] = [];
+
+						const hasErr = this.coll.get(document.uri);
+						if (hasErr) {
+							this.coll.get(document.uri)?.forEach((item) => {
+								if (item.message === errObj.message) {
+									return;
+								} else {
+									if (item.range.start.line === errObj.range.start.line) {
+										return;
+									}
+								}
+							});
+						}
+						diagnostics.push(errObj);
+						this.coll.set(document.uri, diagnostics);
 					});
 					return Promise.reject();
 				}
@@ -27,8 +49,6 @@ export class GoctlDocumentFormattingEditProvider implements vscode.DocumentForma
 	}
 
 	private runFormatter(
-		// formatTool: string,
-		// formatFlags: string[],
 		document: vscode.TextDocument,
 		token: vscode.CancellationToken
 	): Thenable<vscode.TextEdit[]> {
@@ -55,7 +75,6 @@ export class GoctlDocumentFormattingEditProvider implements vscode.DocumentForma
 
 				switch (errCode) {
 					case 'ENOENT': {
-						// promptForMissingTool(formatTool);
 						vscode.window.showInformationMessage("If you don't have goctl installed, you can install it with the following this doc: \"https://github.com/zeromicro/go-zero#6-quick-start\"");
 						vscode.window.showWarningMessage('Check the console in goctl when formatting. goctl seem not in your $PATH , please try in terminal.');
 						break;
@@ -84,16 +103,36 @@ export class GoctlDocumentFormattingEditProvider implements vscode.DocumentForma
 					new vscode.TextEdit(new vscode.Range(fileStart, fileEnd), stdout)
 				];
 
-				// const timeTaken = Date.now() - t0;
-				// sendTelemetryEventForFormatting(formatTool, timeTaken);
-				// if (timeTaken > 750) {
-				// 	console.log(`Formatting took too long(${timeTaken}ms). Format On Save feature could be aborted.`);
-				// }
+				this.coll.delete(document.uri);
+
 				return resolve(textEdits);
 			});
 			if (p.pid) {
 				p.stdin.end(document.getText());
 			}
 		});
+	}
+
+	createDiagnostic(doc: vscode.TextDocument, err: string): vscode.Diagnostic {
+		let errArr = err.split(' ');
+		let [line, charStart] = errArr[2].split(':');
+
+		let source = errArr[0];
+		let msg = errArr.splice(3).join(' ').trim();
+
+		const lineNumber = parseInt(line) - 1;
+		const text = doc.lineAt(lineNumber);
+		const charNumber = text.text.trim().length;
+		const range = new vscode.Range(
+			new vscode.Position(lineNumber, parseInt(charStart) + 1),
+			new vscode.Position(lineNumber, charNumber)
+		);
+		return {
+			code: '',
+			message: msg,
+			range: range,
+			severity: vscode.DiagnosticSeverity.Error,
+			source: source,
+		};
 	}
 }
